@@ -24,13 +24,13 @@ An Angular front end for IdentityServer4.
 
 ## Installation
 
-### Install yarn
+### Install Yarn
 
 Run `sudo npm install yarn -g` 
 
-### Install modules
+### Install Modules
 Run `yarn install` 
 
-## Run UI 
+## Run Admin UI 
 
 Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
