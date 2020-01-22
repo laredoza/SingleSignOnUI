@@ -17,8 +17,8 @@ An Angular front end for IdentityServer4.
 ![Preview](https://raw.githubusercontent.com/laredoza/SingleSignOnUI/master/SingleSignOn.gif)
 
 ### Requirements
+- [SingleSignOnApi ( Api used to manage the Identity4 server )](https://github.com/laredoza/SingleSignOnApi) 
 - [SingleSignOnIdentityServer ( IdentityServer4 functionality )](https://github.com/laredoza/SingleSignOnIdentityServer)
-- [SingleSignOnApi ( Dotnet core api used to manage the Identity4 server )](https://github.com/laredoza/SingleSignOnApi) 
 - [SingleSignOnExamples ( Example applications used to connect to Identity4 server) ](https://github.com/laredoza/SingleSignOnExamples)
 
 ## Installation
