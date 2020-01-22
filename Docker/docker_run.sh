@@ -1,0 +1,1 @@
+docker run --rm -it -p 4200:80 single-sign-on-admin

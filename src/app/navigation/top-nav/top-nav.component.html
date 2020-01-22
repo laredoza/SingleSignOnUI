@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" fxFlex fxLayoutAlign="start center" fxLayoutGap="1rem">
+  <button mat-icon-button id="menu" (click)="navService.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button> 
+  <!-- <span>{{ navItem?.displayName }}</span> -->
+  <span>{{ header }}</span>
+  <app-navigation-menu fxFlex fxLayoutAlign="flex-end"></app-navigation-menu>
+</mat-toolbar>

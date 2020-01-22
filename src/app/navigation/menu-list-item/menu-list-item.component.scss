@@ -1,0 +1,42 @@
+@import '../../theme';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+
+  .mat-list-item.active {
+    background-color: mat-color($app-primary, 50);
+  }
+  &:hover,
+  &:focus {
+    >.mat-list-item:not(.expanded) {
+      background-color: mat-color($app-primary, 100) !important;
+    }
+  }
+}
+
+.mat-list-item {
+  padding: 8px 0;
+  display: flex;
+  width: auto;
+
+  .routeIcon {
+    margin-right: 40px;
+  }
+}
+
+.toolbar-title {
+  margin: 0 16px 0 16px;
+}
+
+.mat-subheader {
+  font-size: 18px;
+  font-weight: 900;
+  margin-top: 10px !important;
+}
+
+.app-nav-list-icon {
+  margin: 0 12px 0 12px;
+}

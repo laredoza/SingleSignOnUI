@@ -1,0 +1,32 @@
+<!-- 
+<router-outlet></router-outlet>
+
+<div [class.isPrinting]="isPrinting">
+    <app-header (toggleSidenav)="sidenav.toggle()" class="mat-elevation-z6"></app-header>
+    <div class="main-loading">
+        <mat-progress-bar *ngIf="routeIsLoading" color="primary" mode="indeterminate">
+        </mat-progress-bar>
+    </div>
+
+    
+</div> -->
+
+<!-- <app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav> -->
+<div class="main-loading">
+        <mat-progress-bar *ngIf="routeIsLoading" color="primary" mode="indeterminate">
+        </mat-progress-bar>
+    </div>
+
+<app-side-nav fxLayout="column" fxFlexFill>
+
+</app-side-nav>
+
+<!-- <div class="colorNested box" fxlayout="row" style="flex-direction: row; box-sizing: border-box; display: flex;" fxflex="100%">
+    <div fxflex="50%" fxflex.gt-sm="25" fxhide.md="" style="cursor: pointer; flex-direction: row; box-sizing: border-box; display: flex; flex: 1 1 100%; max-width: 25%;">
+        <div fxhide='true' fxflex="" style="flex: 1 1 1e-09px; box-sizing: border-box;">Col #1: First item in row</div>
+        <div fxflex="" style="flex: 1 1 1e-09px; box-sizing: border-box;">Col #1: Second item in row</div>
+    </div><div fxflex="" style="cursor: pointer; flex-direction: column; box-sizing: border-box; display: flex; flex: 1 1 0%;">
+        <div fxflex="" style="flex: 1 1 1e-09px; box-sizing: border-box;">Col #2: First item in column</div>
+        <div fxflex="" style="flex: 1 1 1e-09px; box-sizing: border-box;">Col #2: Second item in column</div>
+    </div>
+</div> -->

@@ -1,0 +1,11 @@
+<div >
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" matTooltip="My profile">
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Sign out</span>
+        </button>
+    </mat-menu>
+</div>

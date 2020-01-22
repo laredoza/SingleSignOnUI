@@ -1,0 +1,72 @@
+<div *ngIf="isLoadingResults" class="loading-container">
+  <mat-progress-bar *ngIf="isLoadingResults" mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="!isLoadingResults">
+  <div class="toolbar-container">
+      <mat-toolbar fxlayoutgap="1rem">
+          <button (click)="goBack()" [routerLink]="['']" color="primary" mat-button="mat-button">
+              <mat-icon>arrow_back</mat-icon>
+          </button>
+          <span>
+              {{ pageTitle }}
+          </span>
+      </mat-toolbar>
+  </div>
+  <form (ngSubmit)="onSubmit(); $event.stopPropagation();" *ngIf="!isLoadingResults" [formGroup]="form" >
+      <div class="login-main" fxlayout="row" fxlayoutalign="center top">
+          <mat-card>
+              <mat-card-content fxlayout="column" fxlayoutgap="2rem">
+                  <mat-form-field class="input-contol-full-width">
+                      <input formControlName='id' matInput="matInput" placeholder="Id" type="text">
+                      <mat-error *ngIf="form.controls.id.invalid">Id required</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="input-contol-full-width">
+                      <input formControlName='clientId' matInput="matInput" placeholder="Client Id" type="text">
+                      <mat-error *ngIf="form.controls.clientId.invalid">Client id required</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="input-contol-full-width">
+                      <input formControlName='clientName' matInput="matInput" placeholder="Client Name" type="text" >
+                      <mat-error *ngIf="form.controls.clientName.invalid">Client name required</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="input-contol-full-width">
+                      <input formControlName='description' matInput="matInput" placeholder="Description" type="text" >
+                      <mat-error *ngIf="form.controls.description.invalid">Description required</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="input-contol-full-width">
+                      <input formControlName='identityTokenLifetime' matInput="matInput" placeholder="Identity Token Lifetime" type="text" >
+                      <mat-error *ngIf="form.controls.identityTokenLifetime.invalid">Identity Token Lifetime required</mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="input-contol-full-width">
+                      <input formControlName='accessTokenLifetime' matInput="matInput" placeholder="Access Token Lifetime" type="text" >
+                      <mat-error *ngIf="form.controls.accessTokenLifetime.invalid">Access Token Lifetime required</mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="input-contol-full-width">
+                                    <mat-label>Select Grant Type</mat-label>
+                                    <select [errorStateMatcher]="matcher" formControlName='allowedGrantTypes' matNativeControl [(ngModel)]="selectedGrant">
+                                        <option *ngFor="let option of grantTypes" [value]="option.value"> 
+                                          {{option.text}} 
+                                        </option>
+                                    </select>
+                                    <mat-error *ngIf="form.controls.allowedGrantTypes.hasError('required')">You must make a selection</mat-error>
+                  </mat-form-field>
+
+
+                  
+                  
+                  <!-- <mat-checkbox formControlName="nonEditable">Non-Editable</mat-checkbox> -->
+                  <mat-checkbox formControlName="enabled">Enabled</mat-checkbox>
+                  <mat-checkbox formControlName="allowOfflineAccess" *ngIf="displayAllowOfflineAccess">Allow Offline Access</mat-checkbox>
+                  <mat-checkbox formControlName="requirePkce" *ngIf="displayRequirePkce">Require Pkce</mat-checkbox>
+                  <mat-checkbox formControlName="requireClientSecret" *ngIf="displayRequireClientSecret">Require Client Secret</mat-checkbox>
+                  <mat-checkbox formControlName="allowAccessTokensViaBrowser" *ngIf="displayAllowAccessTokensViaBrowser">Display Allow Access Tokens Via Browser</mat-checkbox>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                  <button (click)="goBack()" [routerLink]="['']" mat-flat-button="mat-flat-button">Cancel</button>
+                  <button [disabled]="!form.valid" color="primary" mat-flat-button="mat-flat-button" type="submit">Save</button>
+              </mat-card-actions>
+          </mat-card>
+      </div>
+  </form>
+</div>

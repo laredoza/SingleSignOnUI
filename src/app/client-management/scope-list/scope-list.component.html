@@ -1,0 +1,107 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoadingResults"></mat-progress-bar>
+<div fxLayout="column" fxLayoutGap="1rem" class="users" fxLayoutGap="1rem">
+  <mat-toolbar fxFlex fxLayoutAlign="start center" fxLayout="row">
+    <button (click)="goBack()" [routerLink]="['']" color="primary" mat-button="mat-button">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <!-- <div fxLayout="column"> -->
+    <app-collapse-menu-and-title fxShow.xs fxHide="true"></app-collapse-menu-and-title>
+      <!-- Mobile Filter Button -->
+      <span fxFlex fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem" fxLayoutGap.xs="1rem" fxShow="false" fxShow.xs="true">
+        <span fxFlex fxLayout="row" fxLayoutAlign="end center" fxLayoutGap.xs="1rem">
+            <a title="Add" [routerLink]="['add/0']" title="Add">
+                <mat-icon>add</mat-icon>
+            </a>
+            <a title="Filter" (click)="toggleDisplayFilter()" title="Filter">
+                <mat-icon>filter_list</mat-icon>
+            </a>
+            <a title="Refresh" (click)="refresh()" title="Refresh">
+                <mat-icon>refresh</mat-icon>
+            </a>
+            <a title="Excel" (click)="export()" title="Excel">
+                <mat-icon>save_alt</mat-icon>
+            </a>
+        </span>
+      </span>
+      <!--Search Desktop Controls-->
+      <span *ngIf="selection.selected.length === 0" fxShow="true" fxShow.xs="false">
+            <mat-form-field appearance="standard">
+                    <input matInput (ngModelChange)="this.searchUpdate.next($event)" placeholder="Search" [(ngModel)]="searchFilter" autofocus>
+                    <button mat-button *ngIf="searchFilter" matSuffix mat-icon-button aria-label="Clear" (click)="searchFilter=''">
+                        <mat-icon (click)="onSearch('')">close</mat-icon>
+                    </button>
+                </mat-form-field>
+      </span>
+
+      <!--Add Button desktop-->
+      <button mat-button color="primary" [routerLink]="['add']" [queryParams]="" fxShow="true" fxShow.xs="false" title="Add">
+        <mat-icon>add</mat-icon> Add 
+      </button>
+      <button mat-button color="primary" (click)="removeScopes()" fxShow="true" fxShow.xs="false" *ngIf="selection.selected.length > 0" title="Remove Selected">
+        <mat-icon>delete</mat-icon> Remove Selected ({{selection.selected.length}})
+      </button>
+      <!-- Desktop Menu -->
+      <span fxFlex fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem" fxShow="true" fxHide.xs="true" fxHide.sm="true">
+          <button mat-stroked-button color="primary" (click)="refresh()" title="Refresh">
+              <mat-icon>refresh</mat-icon> Refresh
+          </button>
+          <button mat-stroked-button color="primary" [matMenuTriggerFor]="exportMenu" title="Download">
+              <mat-icon>save_alt</mat-icon> Download
+          </button>
+          <mat-menu #exportMenu="matMenu">
+              <button mat-menu-item (click)="export()"><span fxShow="true" fxHide.sm="true">Excel</span></button>
+          </mat-menu>
+      </span>
+
+  </mat-toolbar>
+  <!--Small search desktop-->
+  <div *ngIf="selection.selected.length === 0 && expanded" fxShow="false" fxShow.xs="true" class="small-search">
+           <mat-form-field appearance="standard">
+                    <input matInput (ngModelChange)="this.searchUpdate.next($event);" placeholder="Search" [(ngModel)]="searchFilter">
+                    <button mat-button *ngIf="searchFilter" matSuffix mat-icon-button aria-label="Clear" (click)="searchFilter=''">
+                        <mat-icon (click)="onSearch('')">close</mat-icon>
+                    </button>
+        
+            </mat-form-field>
+    </div>
+    <!--Table-->
+    <div class="table-container" *ngIf="!isLoadingResults && !dataSource ? false : dataSource.data != null ? dataSource.data.length : false">
+        <table mat-table matSort [dataSource]="dataSource.data" (matSortChange)="sortData($event)" [matSortActive]="sortActive()" [matSortDirection]="sortDirection()" #TABLE>
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="scope">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Scope</th>
+                <td mat-cell *matCellDef="let element"> {{element.scope}} </td>
+            </ng-container>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="remove">
+                    <th mat-header-cell mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                        <a mat-icon-button (click)="removeScope(element)" title="Remove">
+                            <mat-icon>delete</mat-icon>
+                        </a>
+                    </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr> 
+        </table>
+        <mat-paginator [length]="totalNumberOfItems" [pageSize] = "10" [pageSizeOptions]="[10, 20, 50, 100]" (page)="pagingChanged($event)"></mat-paginator>
+    </div>
+    <div class="table-container" *ngIf="dataSource.data.length === 0 && !isLoadingResults">
+        <div><span>ZERO RESULT</span></div>
+    </div>
+</div>

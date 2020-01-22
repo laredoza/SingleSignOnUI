@@ -1,0 +1,87 @@
+.tool-bar-small-expanded {
+    height: 200px !important;
+}
+
+.tool-bar-small{
+    height: 45px !important;
+}
+
+.desktop-title{
+    margin-right: 1rem;
+}
+
+.filteredText {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.clients {
+    overflow: hidden;
+
+    .toolbar-container {
+        height: 64px;
+
+        small {
+            font-weight: normal;
+            font-size: .75rem;
+            padding: 0 1rem;
+        }
+    }
+
+    .mat-form-field {
+        font-size: 1rem;
+        line-height: 1rem;
+        color: #333;
+        padding-right: 2rem;
+    }
+
+    .loading-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.15);
+        z-index: 101;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table-container {
+        overflow: auto;
+        background-color: #FFF;
+
+        table {
+            width: 100%;
+
+            th,
+            td {
+                padding: 0 .5rem;
+                white-space: nowrap;
+            }
+
+            td[data-align="right"] {
+                text-align: right;
+            }
+
+            th[data-align="center"],
+            td[data-align="center"] {
+                text-align: center;
+            }
+
+            tr.mat-footer-row {
+                font-weight: bold;
+            }
+
+            .mat-table-sticky {
+                border-top: 1px solid #e0e0e0;
+              }
+        }
+    }
+
+}
+
+.small-search {
+    padding-left: 10px !important;
+}
