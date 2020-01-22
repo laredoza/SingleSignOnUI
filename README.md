@@ -14,6 +14,7 @@ An Angular front end for IdentityServer4.
 - Manage Users;
 - Manage Roles;
 
+
 ![Preview](https://raw.githubusercontent.com/laredoza/SingleSignOnUI/master/SingleSignOn.gif)
 
 ### Requirements
