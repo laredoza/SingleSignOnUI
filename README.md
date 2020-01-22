@@ -12,7 +12,7 @@ An Angular front end for IdentityServer4. [IdentityServer4](http://docs.identity
 - Manage Users;
 - Manage Roles;
 
-![Preview](https://dev.azure.com/laredoza/c08230d9-840c-4294-bf9c-a1e47c6cdac0/_apis/git/repositories/6cf9f8bc-d979-4904-bb68-c439b304a06e/items?path=%2FSingleSignOn.gif&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=octetStream&api-version=5.0)
+![Preview](https://raw.githubusercontent.com/laredoza/SingleSignOnUI/master/SingleSignOn.gif)
 
 ### There are two Api projects.
 - IdentityServerAspNetIdentity ( This offers the main IdentityServer4 functionality )
