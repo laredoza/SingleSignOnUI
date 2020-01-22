@@ -1,4 +1,4 @@
-# Single Sign-on Server
+# Single Sign-on UI 
 
 An Angular front end for IdentityServer4. [IdentityServer4](http://docs.identityserver.io/en/latest/) is an OpenID Connect and OAuth 2.0 framework for ASP.NET Core. 
 
@@ -14,9 +14,9 @@ An Angular front end for IdentityServer4. [IdentityServer4](http://docs.identity
 
 ![Preview](https://raw.githubusercontent.com/laredoza/SingleSignOnUI/master/SingleSignOn.gif)
 
-### There are two Api projects.
-- IdentityServerAspNetIdentity ( This offers the main IdentityServer4 functionality )
-- AdminApi ( Dotnet core api used to manage the Identity4 server ) 
+### Requirements
+- [IdentityServerAspNetIdentity ( IdentityServer4 functionality )](https://github.com/laredoza/SingleSignOnIdentityServer)
+- [AdminApi ( Dotnet core api used to manage the Identity4 server )](https://github.com/laredoza/SingleSignOnApi) 
 
 ## Installation
 
