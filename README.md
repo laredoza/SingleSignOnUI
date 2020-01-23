@@ -45,4 +45,4 @@ User: bob
 
 Password: Pass123$ 
 
-The bob user will not have enough permissions to do anything. Errors will need to be handeled better for him.
+The bob user will not have enough permissions to do anything. Errors will need to be handled better.
