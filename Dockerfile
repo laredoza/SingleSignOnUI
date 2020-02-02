@@ -14,7 +14,7 @@ RUN yarn add global @angular/cli
 RUN yarn ng-version
 
 # Step 4: Copy source files.
-#COPY ../src /app/
+COPY . /app/
 
 # Step 5: Build the solution.
 RUN yarn build-prod
