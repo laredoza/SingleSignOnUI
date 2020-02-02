@@ -51,12 +51,12 @@ The bob user will not have enough permissions to do anything. Errors will need t
 In the following example the database, Single Sign-on Api and Single Sign-on IdentityServer are on the same server with an ip of 10.133.7.99.
 
 ## Migration
-Update the appsettings in the Postgres migration and run it. It is found in [Single Sign-on Api ( Api used to manage the Identity4 server )](https://github.com/laredoza/SingleSignOnApi)
+Update the appsettings in the Postgres migration and run it. It is found in [Single Sign-on Api ( Api used to manage the Identity4 server )](https://github.com/laredoza/SingleSignOnApi). Another alternative is to use the sql files.
 ```
 {
   "serverUrl": "http://10.133.7.99",
   "ConnectionStrings": {
-    "defaultConnection": "Host=localhost;Database=SingleSignOn;Username=postgres;Password=password1;"
+    "defaultConnection": "Host=10.133.7.99;Database=SingleSignOn;Username=postgres;Password=password1;"
   }
 }
 ```
